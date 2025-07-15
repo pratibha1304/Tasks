@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>IP & Location Finder</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 40px;
+      text-align: center;
+    }
+    #info {
+      margin-top: 20px;
+      font-size: 18px;
+      color: green;
+    }
+    button {
+      padding: 12px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2>📍 Find Your IP and Location</h2>
+<button onclick="getIPInfo()">Get My IP & Location</button>
+
+<div id="info"></div>
+
+<script>
+function getIPInfo() {
+  fetch('https://ipinfo.io/json?token=7f6d62a5436632') 
+    .then(res => res.json())
+    .then(data => {
+      const { ip, city, region, country } = data;
+      document.getElementById("info").innerHTML =
+        `🌐 Your current IP address is <strong>${ip}</strong><br>
+         📍 Your location is <strong>${city}, ${region}, ${country}</strong>`;
+    })
+    .catch(err => {
+        console.error("IP fetch failed:", err);
+      document.getElementById("info").innerText = "❌ Could not fetch IP info.";
+    });
+}
+
+
+document.getElementById("ipBtn").addEventListener("click", getIPInfo);
+</script>
+
+</body>
+</html>

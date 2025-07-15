@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Product Tracker</title>
+  <script src="/static/script.js" defer></script>
+  <style>
+    .product { border: 1px solid #ccc; padding: 10px; margin: 10px; width: 200px; display: inline-block; }
+    #recommendations { background: #f0f0f0; padding: 10px; margin-bottom: 20px; }
+  </style>
+</head>
+<body>
+  <h2>🛍️ Recommended for You:</h2>
+  <div id="recommendations">Loading...</div>
+
+  <h2>📦 All Products:</h2>
+  <div class="product" data-id="p1" onmouseenter="startTimer(this)" onmouseleave="endTimer(this)">Product 1</div>
+  <div class="product" data-id="p2" onmouseenter="startTimer(this)" onmouseleave="endTimer(this)">Product 2</div>
+  <div class="product" data-id="p3" onmouseenter="startTimer(this)" onmouseleave="endTimer(this)">Product 3</div>
+</body>
+</html>

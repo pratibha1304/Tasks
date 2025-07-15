@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>📍 Your Current Location</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding-top: 50px;
+    }
+    #mapLink {
+      margin-top: 20px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+<h2>🌐 Show Your Current Location</h2>
+<button onclick="getLocation()">📍 Get My Location</button>
+
+<p id="status"></p>
+<p id="location"></p>
+<a id="mapLink" href="#" target="_blank"></a>
+
+<script>
+function getLocation() {
+  const status = document.getElementById("status");
+  const locationDisplay = document.getElementById("location");
+  const mapLink = document.getElementById("mapLink");
+
+  if (!navigator.geolocation) {
+    status.innerText = "Geolocation is not supported by your browser.";
+    return;
+  }
+
+  status.innerText = "Fetching location...";
+
+  navigator.geolocation.getCurrentPosition(success, error);
+
+  function success(position) {
+    const lat = position.coords.latitude.toFixed(6);
+    const lon = position.coords.longitude.toFixed(6);
+
+    status.innerText = "Location found ✅";
+    locationDisplay.innerText = `Latitude: ${lat}, Longitude: ${lon}`;
+    mapLink.href = `https://www.google.com/maps?q=${lat},${lon}`;
+    mapLink.innerText = "📍 View on Google Maps";
+  }
+
+  function error(err) {
+    status.innerText = `❌ Error: ${err.message}`;
+  }
+}
+</script>
+
+</body>
+</html>
