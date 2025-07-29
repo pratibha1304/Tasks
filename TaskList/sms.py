@@ -1,10 +1,10 @@
 from twilio.rest import Client
 
 
-account_sid = 'ACc60dc2690e5187073f403f5cbab0f00f'
-auth_token = 'ffbb2854427181bb7c29a19820c15f97'
-twilio_number = '+17627060872'  
-destination_number = '+919414806786'  
+account_sid = ''
+auth_token = '7'
+twilio_number = ''  
+destination_number = ''  
 client = Client(account_sid, auth_token)
 
 message = client.messages.create(
